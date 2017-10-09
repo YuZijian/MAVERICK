@@ -12,18 +12,18 @@ url: https://github.com/zxixia/jekyll-xixia
 #     run it like so: jekyll serve --baseurl=''
 baseurl: '/jekyll-xixia'
 ## default date_format
-date_format: 
+date_format:
   title: "%B-%-d-%Y"
   archive: "%b"
   categories: "%b-%Y"
   tag: "%b-%Y"
 # Language
-lan: "en" 
+lan: "en"
 
 paginate: 10
 
 highlighter: rouge
 markdown: kramdown
-gems: ['jekyll-paginate']
+plugins: ['jekyll-paginate']
 
 exclude: ['README.md', 'LICENSE', "*.bak"]
