@@ -7,12 +7,76 @@
 		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>WechatTicket</title>
-				<description>&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+				<title>微信抢票应用开发总结</title>
+				<description>&lt;h1 id=&quot;总结&quot;&gt;总结&lt;/h1&gt;
+&lt;p&gt;这次开发的目标是在一套基于Django的微信公众号平台的开发框架上，实现用户可以通过公众号抢票查票退票的功能以及管理员操作的各个接口。整个过程从环境配置开始，经历接口开发，微信handler开发，测试，正式部署这一系列过程才最终完成。经过这一段时间的开发经历，我也收获了许多。&lt;/p&gt;
+
+&lt;h1 id=&quot;开发的体会与感想&quot;&gt;开发的体会与感想&lt;/h1&gt;
+&lt;p&gt;这次开发过程，配环境一定是重要性排在前几名的项，在看他人博客，不停查阅各种错误信息后，我才完成了环境配置。要相信自己踩到的坑一定有前人踩过，用心去查，就可以找到解决方法。&lt;/p&gt;
+
+&lt;p&gt;之后的开发过程中，我发现大部分的功能需求，都只要实现某些特定的预留好的接口就行了，这也一定程度上减少了工作量。项目框架中封装了APIView类，这是所有前后端接口的基类，我们要实现的实际上是各个接口的get和post方法，这样的封装使得后续的开发简单的许多，值得我们学习。&lt;/p&gt;
+
+&lt;p&gt;在实现了所有要求的接口之后，整个管理员后端页面就可以正常访问操作了，接下来还需要实现一些handler来实现用户与公众号之间的交流互动，从而达到最终的效果。完成了所有这些功能开发后，我不禁回想起小学期的时候我们小组的选题也是一个基于Django的在线购物网站，对比这两个Django工程，我发现当时我们组的代码是如此混乱。一个好的架构，真的可以大大帮助后续的开发过程。&lt;/p&gt;
+
+&lt;p&gt;此外，前几天的课上助教讲了测试的方法，测试也是正式部署前必要的一部分，关于测试的具体内容我还没有很理解，需要在最后的时间里冲刺一下。&lt;/p&gt;
+
+&lt;h1 id=&quot;心路历程&quot;&gt;心路历程&lt;/h1&gt;
+&lt;p&gt;在开始这次开发任务前，我花了一大把时间配环境，在本地完成了环境的配置后，我仍然在配置服务器时几近崩溃，最终联系助教重装。重装了两次服务器后，我终于在本地和服务器都配好了环境，准备做个深呼吸，开始第一次”初识微信“作业的开发。&lt;/p&gt;
+
+&lt;p&gt;十一长假前一周，我完成了”初识微信“的作业，为自己的公众号添加了一个可以计算表达式的功能，并实现了学号的绑定验证。那一次作业并不难，在阅读相关文档和源码后，实际需要写的并不多，好像加了个handler，调了下requests就完成了。&lt;/p&gt;
+
+&lt;p&gt;离十一长假开始还有两天，周四的课上，老师突然说十一你们可能要忙了，因为这次任务量比较大什么的，当时并没有在意这句话，直到十月五日我依然什么都没干，沉醉在朝11+晚3+的生活中，直到那天的某个时刻我想着试着做一做却发现好像无从下手时，才开始紧张起来。&lt;/p&gt;
+
+&lt;p&gt;之后的几天依然进度似乌龟，看看这个文件那个文件就是不知道应该干什么，但还是开始写了几个接口，想测试的时候发现过了一个十一，原本通过清华校园网没问题的突然就GG了，似乎是不再分配独立IP了，但是十一前还是好的，为了解决这一问题又折腾了一会，然后又听说验证清华id的网站不对外网开放了，当时就感觉学校真是存心针对我们的这次作业啊。&lt;/p&gt;
+
+&lt;p&gt;假期结束后我才提高了效率，对照着文档里的接口，一个一个往下实现。完成接口部分后就是根据需求实现一些handler了，在deadline的前两天终于完成了大部分的开发，手动测试又发现一些问题，逐一将这些较大的问题解决后，还剩下功能测试与性能测试的模块需要去完成。这一部分的代码量好像不比开发微信抢票应用的代码量小，写这篇博客的时候已经是15日了凌晨了，我还没有完成测试部分。看着床上玩手机的室友，以后还是要合理安排时间才行。&lt;/p&gt;
+
+</description>
+				<pubDate>Sun, 15 Oct 2017 00:00:00 +0800</pubDate>
+				<link>http://localhost:4000/%E6%80%BB%E7%BB%93/2017/10/15/wechat-ticket-summary.html</link>
+				<guid isPermaLink="true">http://localhost:4000/%E6%80%BB%E7%BB%93/2017/10/15/wechat-ticket-summary.html</guid>
+			</item>
+		
+			<item>
+				<title>微信抢票应用开发环境配置</title>
+				<description>&lt;h1 id=&quot;服务器环境配置&quot;&gt;服务器环境配置&lt;/h1&gt;
+
+&lt;p&gt;开发所使用的服务器是 &lt;font color=&quot;Crimson&quot;&gt;ubuntu 16.04.1 LTS&lt;/font&gt; 版本的，服务器环境的配置参考了他人的博客 &lt;a href=&quot;https://blog.magichc7.com/?p=5&amp;amp;from=timelir&quot;&gt;How to Set Up My First Server&lt;/a&gt;，在这里也对这篇博客的作者黄老板表示感谢，他在我配置环境的过程中帮我解决了一些问题。主要使用 &lt;font color=&quot;Crimson&quot;&gt;Django+Mysql+nginx+uwsgi &lt;/font&gt;实现了生产环境的部署。开发过程中主要使用了PyCharm管理整个工程，首先在本地进行开发调试。&lt;/p&gt;
+
+&lt;h1 id=&quot;通过内网穿透实现在本地进行开发调试&quot;&gt;通过内网穿透实现在本地进行开发调试&lt;/h1&gt;
+
+&lt;p&gt;由于清华校园网以及校外运营商的宽带均不会提供独立IP，因此我们难以在本地进行开发调试。但是对于 &lt;font color=&quot;Crimson&quot;&gt; vim &lt;/font&gt; 使用不是很熟练的人来说，在服务器上开发调试远远没有在本地方便，为了解决这个问题，我们可以通过SSH端口转发实现所谓的“内网穿透”，达到在本地开发的目的。具体的过程如下：&lt;/p&gt;
+
+&lt;h2 id=&quot;step1&quot;&gt;Step1&lt;/h2&gt;
+&lt;p&gt;修改服务器nginx的配置文件，将监听的80端口转发到其他端口&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo vi /etc/nginx/conf.d/wct.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;修改其中的内容为：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;localtion / {
+    proxy_pass http://127.0.0.1:7000;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;step2&quot;&gt;Step2&lt;/h2&gt;
+&lt;p&gt;在本地运行Django项目，通过PyCharm可以设置Django运行在8000端口，然后执行以下命令:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh -R 7000:localhost:8000 ubuntu@&amp;lt;your IP&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这样就实现了转发，如果觉得每次都需要输入该命令比较麻烦，可以新建一个.sh文件，将上述命令复制到这个文件中，以后使用命令&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sh &amp;lt;your sh name&amp;gt;.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;也可以实现一样的效果&lt;/p&gt;
+
+&lt;h2 id=&quot;step3&quot;&gt;Step3&lt;/h2&gt;
+&lt;p&gt;修改微信抢票工程的配置文件 &lt;font color=&quot;Crimson&quot;&gt;configs.json&lt;/font&gt; 中的 &lt;font color=&quot;Crimson&quot;&gt;SITE_DOMAIN&lt;/font&gt; 一项为&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;SITE_DOMAIN&quot;: &quot;http://&amp;lt;your IP&amp;gt;&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这样就可以在本地进行开发调试了。需要注意的是，在本地调试过程中，需要保持ssh的连接，否则涉及微信相关消息例如”抢啥”，”查票“等将不可用。&lt;/p&gt;
+
+&lt;p&gt;完成上述操作后，在本地的修改通过PyCharm的强大功能，甚至无需任何操作就可以进行测试。&lt;/p&gt;
+
 </description>
 				<pubDate>Sat, 14 Oct 2017 00:00:00 +0800</pubDate>
-				<link>http://localhost:4000/other/2017/10/14/wechat-ticket.html</link>
-				<guid isPermaLink="true">http://localhost:4000/other/2017/10/14/wechat-ticket.html</guid>
+				<link>http://localhost:4000/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2017/10/14/wechat-ticket-environment.html</link>
+				<guid isPermaLink="true">http://localhost:4000/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2017/10/14/wechat-ticket-environment.html</guid>
 			</item>
 		
 	</channel>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Xixia</title>
+	<link rel="icon" href="/assets/images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+       <script src="https://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+    <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Xixia</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    
+                    <li class="active"><a href="/">Home</a></li>
+                    <li class="active"><a href="/archive.html">Archive</a></li>
+                    <li class="active"><a href="/categories.html">Categories</a></li>
+                    <li class="active"><a href="/tags.html">Tags</a></li>
+                    <li class="active"><a href="/about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrap">
+    <div class="container container-left">
+        <div class="row">
+            <div class="col-md-3 hidden-xs">
+                
+<div class="sidebar well">
+    <header class="sidebar-header" role="banner">
+        <a href="/">
+            <img src="/assets/images/xixia.gif" class="img-circle" />
+        </a>
+        <!--
+        <h3 class="title">
+        <a href="/"></a>
+        </h3>
+        -->
+    </header>
+    <div class="text-center">
+        Welcome to Xixia！
+    </div>
+</div>
+
+
+<div class="sidebar well">
+    <h1>Top Posts</h1>
+    <ul>
+        
+            
+                
+            
+                
+            
+        
+    </ul>
+</div>
+
+
+<div class="sidebar well">
+    <h1>Recent Posts</h1>
+    <ul>
+        
+          <li><a href="/%E6%80%BB%E7%BB%93/2017/10/15/wechat-ticket-summary.html">微信抢票应用开发总结</a></li>
+        
+          <li><a href="/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2017/10/14/wechat-ticket-environment.html">微信抢票应用开发环境配置</a></li>
+        
+    </ul>
+</div>
+
+<div class="sidebar well">
+    
+<h1>Links</h1>
+<ul>
+  <!-- <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li> -->
+  
+  <li>
+    <a href="http://xixia.info">
+      Xixia
+    </a>
+  </li> 
+  
+  <li>
+    <a href="https://github.com/zxixia/jekyll-xixia">
+      Jekyll-Xixia
+    </a>
+  </li> 
+  
+</ul>
+
+</div>
+
+            </div>
+            <div class="col-md-9">
+                
+<div class="well article">
+        <h2><a href="/%E6%80%BB%E7%BB%93/2017/10/15/wechat-ticket-summary.html">微信抢票应用开发总结</a></h2>
+        <span class="post-date">
+            
+            October-15-2017
+        </span>
+        <hr style="border-top:1px solid #28323C;"/>
+    
+    <div class="post-content">
+    <h1 id="总结">总结</h1>
+<p>这次开发的目标是在一套基于Django的微信公众号平台的开发框架上，实现用户可以通过公众号抢票查票退票的功能以及管理员操作的各个接口。整个过程从环境配置开始，经历接口开发，微信handler开发，测试，正式部署这一系列过程才最终完成。经过这一段时间的开发经历，我也收获了许多。</p>
+
+<h1 id="开发的体会与感想">开发的体会与感想</h1>
+<p>这次开发过程，配环境一定是重要性排在前几名的项，在看他人博客，不停查阅各种错误信息后，我才完成了环境配置。要相信自己踩到的坑一定有前人踩过，用心去查，就可以找到解决方法。</p>
+
+<p>之后的开发过程中，我发现大部分的功能需求，都只要实现某些特定的预留好的接口就行了，这也一定程度上减少了工作量。项目框架中封装了APIView类，这是所有前后端接口的基类，我们要实现的实际上是各个接口的get和post方法，这样的封装使得后续的开发简单的许多，值得我们学习。</p>
+
+<p>在实现了所有要求的接口之后，整个管理员后端页面就可以正常访问操作了，接下来还需要实现一些handler来实现用户与公众号之间的交流互动，从而达到最终的效果。完成了所有这些功能开发后，我不禁回想起小学期的时候我们小组的选题也是一个基于Django的在线购物网站，对比这两个Django工程，我发现当时我们组的代码是如此混乱。一个好的架构，真的可以大大帮助后续的开发过程。</p>
+
+<p>此外，前几天的课上助教讲了测试的方法，测试也是正式部署前必要的一部分，关于测试的具体内容我还没有很理解，需要在最后的时间里冲刺一下。</p>
+
+<h1 id="心路历程">心路历程</h1>
+<p>在开始这次开发任务前，我花了一大把时间配环境，在本地完成了环境的配置后，我仍然在配置服务器时几近崩溃，最终联系助教重装。重装了两次服务器后，我终于在本地和服务器都配好了环境，准备做个深呼吸，开始第一次”初识微信“作业的开发。</p>
+
+<p>十一长假前一周，我完成了”初识微信“的作业，为自己的公众号添加了一个可以计算表达式的功能，并实现了学号的绑定验证。那一次作业并不难，在阅读相关文档和源码后，实际需要写的并不多，好像加了个handler，调了下requests就完成了。</p>
+
+<p>离十一长假开始还有两天，周四的课上，老师突然说十一你们可能要忙了，因为这次任务量比较大什么的，当时并没有在意这句话，直到十月五日我依然什么都没干，沉醉在朝11+晚3+的生活中，直到那天的某个时刻我想着试着做一做却发现好像无从下手时，才开始紧张起来。</p>
+
+<p>之后的几天依然进度似乌龟，看看这个文件那个文件就是不知道应该干什么，但还是开始写了几个接口，想测试的时候发现过了一个十一，原本通过清华校园网没问题的突然就GG了，似乎是不再分配独立IP了，但是十一前还是好的，为了解决这一问题又折腾了一会，然后又听说验证清华id的网站不对外网开放了，当时就感觉学校真是存心针对我们的这次作业啊。</p>
+
+<p>假期结束后我才提高了效率，对照着文档里的接口，一个一个往下实现。完成接口部分后就是根据需求实现一些handler了，在deadline的前两天终于完成了大部分的开发，手动测试又发现一些问题，逐一将这些较大的问题解决后，还剩下功能测试与性能测试的模块需要去完成。这一部分的代码量好像不比开发微信抢票应用的代码量小，写这篇博客的时候已经是15日了凌晨了，我还没有完成测试部分。看着床上玩手机的室友，以后还是要合理安排时间才行。</p>
+
+
+    <hr style="border-top:1px solid #28323C;"/>
+
+    <!-- tags and categories under post -->
+    
+    <ul class="list-unstyled list-inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+         
+            <li class="icon-style"><a href="/categories.html">
+                总结 <span>(1)</span>
+                
+            </a></li>
+        
+      
+    </ul>
+      
+
+    
+    <ul class="list-unstyled list-inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+         
+            <li class="icon-style">
+                <a href="/tags.html">
+                Django <span>(2)</span>
+                ,
+                </a>
+            </li>
+         
+            <li class="icon-style">
+                <a href="/tags.html">
+                ubuntu <span>(2)</span>
+                
+                </a>
+            </li>
+        
+      
+      
+    </ul>
+      
+
+    </div>
+    
+</div>
+<div class="pagination">
+    
+    
+    <a class="btn btn-default" href="/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2017/10/14/wechat-ticket-environment.html" class="previous">Older Post</a>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+    
+<div class="footer">
+    <p>&copy;2017 Xixia , Powered by
+            
+                <a href="http://jekyllrb.com/">
+                Jekyll
+                </a>
+                <!-- not the last, output a ',' -->
+                
+                ,
+                
+            
+                <a href="http://getbootstrap.com/">
+                Bootstrap
+                </a>
+                <!-- not the last, output a ',' -->
+                
+                ,
+                
+            
+                <a href="https://github.com/">
+                Github
+                </a>
+                <!-- not the last, output a ',' -->
+                
+                ,
+                
+            
+                <a href="https://github.com/zxixia/jekyll-xixia">
+                Xixia
+                </a>
+                <!-- not the last, output a ',' -->
+                
+            
+    </p>
+</div>
+
+<!-- 
+    
+
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+ 
+-->
+
+</body>
+</html>
+
+</div>
