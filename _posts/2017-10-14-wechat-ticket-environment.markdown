@@ -18,7 +18,7 @@ description: 对于软件工程3课程微信抢票开发过程中的环境配置
 ## Step1
 修改服务器nginx的配置文件，将监听的80端口转发到其他端口
 ```
-sudo vi /etc/nginx/conf.d/wct.conf
+$ sudo vi /etc/nginx/conf.d/wct.conf
 ```
 修改其中的内容为：
 ```
@@ -29,11 +29,11 @@ localtion / {
 ## Step2
 在本地运行Django项目，通过PyCharm可以设置Django运行在8000端口，然后执行以下命令:
 ```
-ssh -R 7000:localhost:8000 ubuntu@<your IP>
+$ ssh -R 7000:localhost:8000 ubuntu@<your IP>
 ```
 这样就实现了转发，如果觉得每次都需要输入该命令比较麻烦，可以新建一个.sh文件，将上述命令复制到这个文件中，以后使用命令
 ```
-sh <your sh name>.sh
+$ sh <your sh name>.sh
 ```
 也可以实现一样的效果
 
